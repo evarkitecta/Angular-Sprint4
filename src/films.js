@@ -63,8 +63,31 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+  const result7 = array.map(movie => {
+    let hours = 0;
+    let minutes = 0;
+    const hoursRegex = /(\d+)h/; //busca un grupo de dígitos (\d+) seguido de la letra "h".
+    const minutesRegex = /(\d+)min/; //busca un grupo de dígitos (\d+) seguido de las letras "min".
 
+    const hoursMatch = movie.duration.match(hoursRegex); //match: devuelve todas las ocurrencias de una expresión regular dentro de una cadena
+    if (hoursMatch) {
+      hours = parseInt(hoursMatch[1]); //el valor de 1 se utiliza para acceder al primer grupo capturado por la expresión regular que se encuentra entre paréntesis. En este caso el/los dígito/s. El 0 sería la cadena coincidente completa (p.e 2h)
+    }
+
+    const minutesMatch = movie.duration.match(minutesRegex);
+    if (minutesMatch) {
+      minutes = parseInt(minutesMatch[1]);
+    }
+   
+    const totalMinutes = hours * 60 + minutes;
+    return {
+      ...movie,
+      duration: totalMinutes
+    };
+  });
+  // console.log("EXERCICE 7 ->", result7);
+  return result7;
 }
 
 // Exercise 8: Get the best film of a year
