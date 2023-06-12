@@ -22,7 +22,7 @@ function moviesAverage(array) {
 function moviesAverageOfDirector(array, director) {
    const aMovies = array.filter(movie => movie.director === director).map(movie => movie.score);
   let result3 = moviesAverage(aMovies);
-  // console.log("EXERCICE 3 average->", result3);
+  // console.log("EXERCISE 3 average->", result3);
   return result3;
 }
 
@@ -30,7 +30,7 @@ function moviesAverageOfDirector(array, director) {
 function orderAlphabetically(array) {
   const sortMovies = array.map(movie => movie.title).sort();
   let result4 = sortMovies.slice(0, 20);
-  // console.log("EXERCICE 4 sort->", result4);
+  // console.log("EXERCISE 4 sort->", result4);
   return result4;
 }
 
@@ -44,13 +44,22 @@ function orderByYear(array) {
     }
   });
   result5 = sortedArray;
-  // console.log("EXERCICE 5 sort->", result5);
+  // console.log("EXERCISE 5 sort->", result5);
   return result5;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, category) {
+  const aMovies = array.filter(movie => {
+    if (typeof (movie.score) !== "number") { //si se cumple no se incluye en el aMovies
+    } else {
+      return movie.genre.includes(category)
+    }
+  }).map(movie => movie.score);
 
+  let result6 = moviesAverage(aMovies) //función en Exercise 3
+  // console.log("EXERCISE 6 ->", result6);
+  return result6;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
