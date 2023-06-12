@@ -20,7 +20,7 @@ function moviesAverage(array) {
 }
 
 function moviesAverageOfDirector(array, director) {
-   const aMovies = array.filter(movie => movie.director === director).map(movie => movie.score);
+  const aMovies = array.filter(movie => movie.director === director).map(movie => movie.score);
   let result3 = moviesAverage(aMovies);
   // console.log("EXERCISE 3 average->", result3);
   return result3;
@@ -79,7 +79,7 @@ function hoursToMinutes(array) {
     if (minutesMatch) {
       minutes = parseInt(minutesMatch[1]);
     }
-   
+
     const totalMinutes = hours * 60 + minutes;
     return {
       ...movie,
@@ -91,8 +91,11 @@ function hoursToMinutes(array) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array, year) {
+  const aFiltered = array.filter(movie => movie.year === year).sort((a, b) => b.score - a.score);
+  let result8 = [aFiltered[0]];
+  // console.log("EXERCICE 8 ->", result8);
+  return result8;
 }
 
 
